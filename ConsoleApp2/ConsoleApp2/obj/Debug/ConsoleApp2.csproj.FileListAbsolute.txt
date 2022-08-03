@@ -1,0 +1,14 @@
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.AssemblyReference.cache
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
+C:\Users\eduardo.m.goncalves\source\repos\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe.config
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.exe
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\bin\Debug\ConsoleApp2.pdb
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.AssemblyReference.cache
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.csproj.CoreCompileInputs.cache
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.exe
+C:\Edu\Aulas\Projetos\JavaScript\exercicios-js\ConsoleApp2\ConsoleApp2\obj\Debug\ConsoleApp2.pdb
