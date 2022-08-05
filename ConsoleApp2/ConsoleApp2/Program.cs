@@ -12,7 +12,85 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            var arrayDados = Console.ReadLine().Split(' ').ToArray();
+            List<int> listaMinutos = new List<int>();
+
+            int[] arrFinal = { 0, 0, 0, 0 };
+            int minEmUmDia = 1440;
+
+            string[] RecebeDados()
+            {
+                return Console.ReadLine().Split(' ').ToArray();
+            }
+
+            int[] TransformaArrayInt(string[] arr)
+            {
+                int[] arrInt = new int[4];
+
+                for (int i = 0; i < arr.Length; i++)
+                {
+                    arrInt[i] = int.Parse(arr[i]);
+                }
+
+
+                return arrInt;
+            }
+
+            bool ComparaArrays(int[] arr1, int[] arr2)
+            {
+                return Enumerable.SequenceEqual(arr1, arr2);
+            }
+            bool comparaArrays;
+
+            do
+            {
+                int totalDeMinutos;
+                int[] primeiroArray = TransformaArrayInt(RecebeDados());
+                int[] arrInicial = primeiroArray;
+
+
+                int horaAtual = (arrInicial[0] + 1) * 60;
+                int minAtual = arrInicial[1];
+                int totalAtual = horaAtual + minAtual;
+
+                int horaDespertador = (arrInicial[2] + 1) * 60;
+                int minDespertador = arrInicial[3];
+                int totalDespertador = horaDespertador + minDespertador;
+
+                if (horaDespertador == horaAtual)
+                {
+                    if (minDespertador < minAtual)
+                    {
+                        totalDeMinutos = minEmUmDia - totalAtual + totalDespertador;
+                    }
+                    else
+                    {
+                        totalDeMinutos = totalDespertador - totalAtual;
+                    }
+                }
+                else if (horaDespertador < horaAtual)
+                {
+                    totalDeMinutos = totalDespertador + minEmUmDia - totalAtual;
+                }
+                else
+                {
+                    totalDeMinutos = totalDespertador - totalAtual;
+                }
+
+
+                if (totalDeMinutos != 0)
+                {
+                    listaMinutos.Add(totalDeMinutos);
+                }
+
+                comparaArrays = ComparaArrays(arrInicial, arrFinal);
+            } while (!comparaArrays);
+
+
+            for (int i = 0; i < listaMinutos.Count; i++)
+            {
+                Console.WriteLine(listaMinutos[i]);
+            }
+
 
 
 
@@ -22,6 +100,44 @@ namespace ConsoleApp2
         }
 
 
+        public void BEE1589()
+        {
+            int casosDeTeste = int.Parse(Console.ReadLine());
+            int[] menorRaio = new int[casosDeTeste];
+
+            for (int i = 0; i < casosDeTeste; i++)
+            {
+                var arrayDados = Console.ReadLine().Split(' ').ToArray();
+
+                int raioR1 = int.Parse(arrayDados[0]);
+                int raioR2 = int.Parse(arrayDados[1]);
+
+                menorRaio[i] = (raioR1 * 2 + raioR2 * 2) / 2;
+
+            }
+
+            for (int i = 0; i < casosDeTeste; i++)
+            {
+                Console.WriteLine(menorRaio[i]);
+            }
+        }
+        public void BEE2006()
+        {
+            int tipoDeCha = int.Parse(Console.ReadLine());
+
+            var arrayDados = Console.ReadLine().Split(' ').ToArray();
+
+            int respostasCorretas = 0;
+
+            for (int i = 0; i < arrayDados.Length; i++)
+            {
+                if (int.Parse(arrayDados[i]) == tipoDeCha)
+                {
+                    respostasCorretas++;
+                }
+            }
+            Console.WriteLine(respostasCorretas);
+        }
         public void BEE2434()
         {
             var arrayDados = Console.ReadLine().Split(' ').ToArray();
@@ -46,7 +162,6 @@ namespace ConsoleApp2
                 Console.WriteLine($"O saldo do dia {i + 1} é R$ {saldoFinal},00.");
             }
         }
-
         public void BEE1041()
         {
             var arrayDados = Console.ReadLine().Split(' ').ToArray();
@@ -86,7 +201,6 @@ namespace ConsoleApp2
                 }
             }
         }
-
         public static double MediaPonderada()
         {
             var arrayDados = Console.ReadLine().Split(' ').ToArray();
@@ -110,7 +224,6 @@ namespace ConsoleApp2
 
             return mediaPonderada;
         }
-
         public static bool AprovaAluno(double mediaPonderada)
         {
             if (mediaPonderada >= 7.0)
@@ -122,7 +235,6 @@ namespace ConsoleApp2
                 return false;
             }
         }
-
         public static bool ReprovaAluno(double media)
         {
             if (media < 5.0)
@@ -213,7 +325,6 @@ namespace ConsoleApp2
                 Console.WriteLine("Aluno reprovado.");
             }
         }
-
         public void URI1015()
         {
             var entradaP1 = Console.ReadLine().Split(' ').ToArray();
@@ -231,7 +342,6 @@ namespace ConsoleApp2
 
             Console.WriteLine(distancia.ToString("F4"));
         }
-
         public void URI1017()
         {
             double tempo = double.Parse(Console.ReadLine());
@@ -240,8 +350,7 @@ namespace ConsoleApp2
 
             //Console.WriteLine(Math.Round(litros, 3) + "\n");
             Console.WriteLine(litros.ToString("0.000"));
-        }
-        
+        }        
         public void URI1019()
         {
             int tempo = int.Parse(Console.ReadLine());
@@ -251,7 +360,6 @@ namespace ConsoleApp2
 
             Console.WriteLine($"{horas}:{minutos}:{segundos}");
         }
-
         public void URI1020()
         {
             var dados = int.Parse(Console.ReadLine());
@@ -263,7 +371,6 @@ namespace ConsoleApp2
             Console.WriteLine($"{mes} mes(es)");
             Console.WriteLine($"{dia} dia(s)");
         }
-
         public void URI1035()
         {
             var dados = Console.ReadLine().Split(' ').ToArray();
@@ -285,17 +392,18 @@ namespace ConsoleApp2
         {
             List<Lanche> lanches;
 
-            lanches = new List<Lanche>();
-
-            lanches.Add(new Lanche(1, "Cachorro Quente", 4.00));
-            lanches.Add(new Lanche(2, "X-Salada", 4.50));
-            lanches.Add(new Lanche(3, "X-Bacon", 5.00));
-            lanches.Add(new Lanche(4, "Torrada simples", 2.00));
-            lanches.Add(new Lanche(5, "Refrigerante", 1.50));
+            lanches = new List<Lanche>
+            {
+                new Lanche(1, "Cachorro Quente", 4.00),
+                new Lanche(2, "X-Salada", 4.50),
+                new Lanche(3, "X-Bacon", 5.00),
+                new Lanche(4, "Torrada simples", 2.00),
+                new Lanche(5, "Refrigerante", 1.50)
+            };
 
             foreach (Lanche item in lanches)
             {
-                Console.WriteLine($"{item.Codigo} {item.Especificacao} R${item.Preco.ToString("N2")}");
+                Console.WriteLine($"{item.Codigo} {item.Especificacao} R${item.Preco:N2}");
             }
         }
         public void URI1038()
@@ -312,7 +420,6 @@ namespace ConsoleApp2
 
             Console.WriteLine($"Total: R$ {totalDaCompra:N2}\n");
         }
-
         public void StringFormat()
         {
             object[] values = { 1603, 1794.68235, 15436.14 };
