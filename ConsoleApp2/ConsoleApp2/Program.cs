@@ -12,6 +12,40 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
+            
+
+
+
+
+
+
+
+            Console.ReadLine();
+        }
+
+
+        public void Staircase()
+        {
+            int n = 5;
+
+            for (int i = 0; i < n; i++)
+                Console.WriteLine(new String('#', i + 1).PadLeft(n, '.'));
+
+
+            for (int i = 0; i < n;)
+            {
+                int numeroDeVezesEspaco = n - 1 - i;
+                i++;
+                int numeroDeVezesHastag = i;
+
+                string espaco = new string(' ', numeroDeVezesEspaco);
+                string hastag = new string('#', numeroDeVezesHastag);
+
+                Console.WriteLine($"{espaco}{hastag}");
+            }
+        }
+        public void PlusMinus()
+        {
             List<int> arr = new List<int> { -4, 3, -9, 0, 4, 1 };
 
             decimal positivos = 0;
@@ -42,12 +76,7 @@ namespace ConsoleApp2
             Console.WriteLine($"{porcPositivos:F6}");
             Console.WriteLine($"{porcNegativos:F6}");
             Console.WriteLine($"{porcZeros:F6}");
-
-
-
-            Console.ReadLine();
         }
-
         public void ValoresDiagonais()
         {
             List<List<int>> arr = new List<List<int>>();
