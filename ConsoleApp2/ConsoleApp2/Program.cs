@@ -11,16 +11,96 @@ namespace ConsoleApp2
     class Program
     {
         static void Main(string[] args)
-        {   
+        {
+            List<int> arr = new List<int> { -4, 3, -9, 0, 4, 1 };
 
-            
+            decimal positivos = 0;
+            decimal negativos = 0;
+            decimal zeros = 0;
+
+            for (int i = 0; i < arr.Count; i++)
+            {
+                if (arr[i] > 0)
+                {
+                    positivos++;
+                }
+                else if (arr[i] < 0)
+                {
+                    negativos++;
+                }
+                else
+                {
+                    zeros++;
+                }
+            }
+
+            decimal porcPositivos = positivos / arr.Count;
+            decimal porcNegativos = negativos / arr.Count;
+            decimal porcZeros = zeros / arr.Count;
 
 
-
+            Console.WriteLine($"{porcPositivos:F6}");
+            Console.WriteLine($"{porcNegativos:F6}");
+            Console.WriteLine($"{porcZeros:F6}");
 
 
 
             Console.ReadLine();
+        }
+
+        public void ValoresDiagonais()
+        {
+            List<List<int>> arr = new List<List<int>>();
+
+            List<int> item1 = new List<int> { 6, 6, 7, -10, 9, -3, 8, 9, -1 };
+            List<int> item2 = new List<int> { 9, 7, -10, 6, 4, 1, 6, 1, 1 };
+            List<int> item3 = new List<int> { -1, -2, 4, -6, 1, -4, -6, 3, 9, };
+            List<int> item4 = new List<int> { -8, 7, 6, -1, -6, -6, 6, -7, 2 };
+            List<int> item5 = new List<int> { -10, -4, 9, 1, -7, 8, -5, 3, -5 };
+            List<int> item6 = new List<int> { -8, -3, -4, 2, -3, 7, -5, 1, -5 };
+            List<int> item7 = new List<int> { -2, -7, -4, 8, 3, -1, 8, 2, 3 };
+            List<int> item8 = new List<int> { -3, 4, 6, -7, -7, -8, -3, 9, -6 };
+            List<int> item9 = new List<int> { -2, 0, 5, 4, 4, 4, -3, 3, 0 };
+
+            arr.Add(item1);
+            arr.Add(item2);
+            arr.Add(item3);
+            arr.Add(item4);
+            arr.Add(item5);
+            arr.Add(item6);
+            arr.Add(item7);
+            arr.Add(item8);
+            arr.Add(item9);
+
+
+            int result = DiagonalDifference(arr);
+
+            Console.WriteLine(result);
+        }
+        public static int DiagonalDifference(List<List<int>> arr)
+        {
+            int soma;
+            int diagonal1 = 0;
+            int diagonal2 = 0;
+
+            for (int i = 0; i < arr.Count; )
+            {
+                diagonal1 = arr[i][i] + diagonal1;
+                diagonal2 = arr[i][arr.Count - 1 - i] + diagonal2;
+
+                i++;
+            }
+
+            soma = diagonal1 - diagonal2;
+
+            if (diagonal1 < diagonal2)
+            {
+                return soma * -1;
+            }
+            else
+            {
+                return soma;
+            }
         }
 
         public static List<int> comparaListas(List<int> a, List<int> b)
@@ -454,6 +534,12 @@ namespace ConsoleApp2
             string result;
             foreach (var value in values)
             {
+                // C = Currency para moeda 
+                // E = Exponencial, notação exponencial
+                // F = Ponto fixo, dígitos integrais e decimais com sinal negativo opcional.
+                // P = Porcentagem, número multiplicado por 100 e exibido com um sinal de porcentagem.
+                // link = https://docs.microsoft.com/pt-br/dotnet/standard/base-types/standard-numeric-format-strings
+
                 result = String.Format("{0,12:C4}   {0,12:E4}   {0,12:F4}   {0,12:N4}  {1,12:P4}\n",
                                        Convert.ToDouble(value), Convert.ToDouble(value) / 10000);
                 Console.WriteLine(result);
