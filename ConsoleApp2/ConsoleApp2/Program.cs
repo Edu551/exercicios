@@ -11,6 +11,43 @@ namespace ConsoleApp2
     class Program
     {
         static void Main(string[] args)
+        {   
+
+            
+
+
+
+
+
+
+            Console.ReadLine();
+        }
+
+        public static List<int> comparaListas(List<int> a, List<int> b)
+        {
+            List<int> resultado = new List<int>();
+            int alice = 0;
+            int bob = 0;
+
+            for (int i = 0; i < a.Count; i++)
+            {
+                if (a[i] > b[i])
+                {
+                    alice++;
+                }
+                else if (a[i] < b[i])
+                {
+                    bob++;
+                }
+            }
+
+            resultado.Add(alice);
+            resultado.Add(bob);
+
+            return resultado;
+        }
+
+        public void BEE1103()
         {
             List<int> listaMinutos = new List<int>();
 
@@ -90,16 +127,7 @@ namespace ConsoleApp2
             {
                 Console.WriteLine(listaMinutos[i]);
             }
-
-
-
-
-
-
-            Console.ReadLine();
         }
-
-
         public void BEE1589()
         {
             int casosDeTeste = int.Parse(Console.ReadLine());
