@@ -19,11 +19,102 @@ namespace ConsoleApp2
 
 
 
-
             Console.ReadLine();
         }
 
 
+        public void StringFormat()
+        {
+            object[] values = { 1603, 1794.68235, 15436.14 };
+            string result;
+            foreach (var value in values)
+            {
+                // C = Currency para moeda 
+                // E = Exponencial, notação exponencial
+                // F = Ponto fixo, dígitos integrais e decimais com sinal negativo opcional.
+                // P = Porcentagem, número multiplicado por 100 e exibido com um sinal de porcentagem.
+                // link = https://docs.microsoft.com/pt-br/dotnet/standard/base-types/standard-numeric-format-strings
+
+                result = String.Format("{0,12:C4}   {0,12:E4}   {0,12:F4}   {0,12:N4}  {1,12:P4}\n",
+                                       Convert.ToDouble(value), Convert.ToDouble(value) / 10000);
+                Console.WriteLine(result);
+            }
+        }
+        public void converterTipos()
+        {
+            List<int> list = new List<int> { 396285104, 573261094, 759641832, 819230764, 364801279 };
+
+            var retornaUmaLista = list.Select(r => (long)r).ToList();
+            Console.WriteLine($"{retornaUmaLista[0]} {retornaUmaLista[1]} {retornaUmaLista[2]}");
+
+            var retornaIEnumerable = list.Select(r => (long)r);
+            Console.WriteLine($"{retornaIEnumerable.ElementAt(0)} {retornaIEnumerable.ElementAt(1)} {retornaIEnumerable.ElementAt(2)}");
+
+            List<long> novaLista = list.ConvertAll(r => (long)r);
+            Console.WriteLine($"{novaLista[0]} {novaLista[1]} {novaLista[2]} {novaLista[3]} {novaLista[4]}");
+        }
+
+
+
+
+        public void MinMaxSum()
+        {
+            List<int> list = new List<int> { 396285104, 573261094, 759641832, 819230764, 364801279 };
+
+            var lista = list.Select(r => (long)r).ToList();
+
+
+            long result1 = 0;
+            long result2 = 0;
+            long max = lista.Max();
+            long min = lista.Min();
+            for (int i = 0; i < lista.Count; i++)
+            {
+                result1 += lista[i];
+                result2 += lista[i];
+            }
+            Console.WriteLine("{0} {1}", result1 - max, result2 - min);
+
+
+            long valorMin = 0;
+            long valorMax = 0;
+            var isFirstloop = true;
+
+            for (int i = 0; i < lista.Count; i++)
+            {
+                long tempCount = 0;
+                for (int j = 0; j < lista.Count; j++)
+                {
+                    if (i != j)
+                    {
+                        tempCount += lista[j];
+
+                    }
+                }
+
+                if (isFirstloop)
+                {
+
+                    valorMin = tempCount;
+                    valorMax = tempCount;
+                    isFirstloop = false;
+                }
+                else
+                {
+                    if (tempCount < valorMin)
+                    {
+                        valorMin = tempCount;
+
+                    }
+                    else if (tempCount > valorMax)
+                    {
+                        valorMax = tempCount;
+                    }
+                }
+            }
+
+            Console.WriteLine($"{valorMin} {valorMax}");
+        }
         public void Staircase()
         {
             int n = 5;
@@ -131,7 +222,6 @@ namespace ConsoleApp2
                 return soma;
             }
         }
-
         public static List<int> comparaListas(List<int> a, List<int> b)
         {
             List<int> resultado = new List<int>();
@@ -155,7 +245,6 @@ namespace ConsoleApp2
 
             return resultado;
         }
-
         public void BEE1103()
         {
             List<int> listaMinutos = new List<int>();
@@ -556,23 +645,6 @@ namespace ConsoleApp2
             double totalDaCompra = valorDoItem * quantidade;
 
             Console.WriteLine($"Total: R$ {totalDaCompra:N2}\n");
-        }
-        public void StringFormat()
-        {
-            object[] values = { 1603, 1794.68235, 15436.14 };
-            string result;
-            foreach (var value in values)
-            {
-                // C = Currency para moeda 
-                // E = Exponencial, notação exponencial
-                // F = Ponto fixo, dígitos integrais e decimais com sinal negativo opcional.
-                // P = Porcentagem, número multiplicado por 100 e exibido com um sinal de porcentagem.
-                // link = https://docs.microsoft.com/pt-br/dotnet/standard/base-types/standard-numeric-format-strings
-
-                result = String.Format("{0,12:C4}   {0,12:E4}   {0,12:F4}   {0,12:N4}  {1,12:P4}\n",
-                                       Convert.ToDouble(value), Convert.ToDouble(value) / 10000);
-                Console.WriteLine(result);
-            }
         }
     }   
 }
