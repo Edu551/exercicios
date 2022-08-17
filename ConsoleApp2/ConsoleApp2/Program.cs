@@ -1,37 +1,29 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Reflection;
 using System.Globalization;
 using ConsoleApp2.classes;
+using System.IO;
+using System.ComponentModel;
 
 namespace ConsoleApp2
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            string horarioInicial = "12:00:00PM";
-            DateTime outputTime;
-
-
-            bool res = DateTime.TryParseExact(
-                horarioInicial,
-                "hh:mm:sstt",
-                System.Globalization.CultureInfo.InvariantCulture,
-                DateTimeStyles.None,
-                out outputTime);
-
-            //return outputTime.ToString("HH:mm:ss"); 
-
-            Console.WriteLine(outputTime.ToString("HH:mm:ss"));
-
-
-
-
+            
+            
             Console.ReadLine();
         }
+
+
 
 
         public void StringFormat()
@@ -66,10 +58,21 @@ namespace ConsoleApp2
         }
 
 
+        public void DadosCloudDay()
+        {
+            long[] p = { 10, 100 };
+            long[] x = { 5, 100 };
+            long[] y = { 4 };
+            long[] r = { 1 };
+
+            long result = Solution.maximumPeople(p, x, y, r);
+
+            Console.WriteLine(result);
+
+        }
         public string TimeConversion(string time)
         {
             DateTime outputTime;
-
 
             bool res = DateTime.TryParseExact(
                 time,
