@@ -12,25 +12,20 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            List<int> list = new List<int>() { 1, 2, 3, 3, 4, 5, 4, 4, 4, 1 };
-
-            var hasDuplicates = list.GroupBy(x => x).Any(g => g.Count() > 1);
-
-            if (hasDuplicates)
-            {
-                var duplicates = list.GroupBy(x => x)
-                                     .Where(g => g.Count() > 1)
-                                     .Select(x => new { Element = x.Key, Count = x.Count() })
-                                     .ToList();
-
-                Console.WriteLine(String.Join(", ", duplicates));
-            }
-            else
-            {
-                Console.WriteLine("Não há valores duplicados na lista.");
-            }
+            string horarioInicial = "12:00:00PM";
+            DateTime outputTime;
 
 
+            bool res = DateTime.TryParseExact(
+                horarioInicial,
+                "hh:mm:sstt",
+                System.Globalization.CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out outputTime);
+
+            //return outputTime.ToString("HH:mm:ss"); 
+
+            Console.WriteLine(outputTime.ToString("HH:mm:ss"));
 
 
 
@@ -71,8 +66,40 @@ namespace ConsoleApp2
         }
 
 
+        public string TimeConversion(string time)
+        {
+            DateTime outputTime;
 
 
+            bool res = DateTime.TryParseExact(
+                time,
+                "hh:mm:sstt",
+                System.Globalization.CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out outputTime);
+
+            return outputTime.ToString("HH:mm:ss"); 
+        }
+        public void BirthdayCakeCandles()
+        {
+            List<int> list = new List<int>() { 1, 2, 3, 3, 4, 5, 4, 4, 4, 1 };
+
+            var hasDuplicates = list.GroupBy(x => x).Any(g => g.Count() > 1);
+
+            if (hasDuplicates)
+            {
+                var duplicates = list.GroupBy(x => x)
+                                     .Where(g => g.Count() > 1)
+                                     .Select(x => new { Element = x.Key, Count = x.Count() })
+                                     .ToList();
+
+                Console.WriteLine(String.Join(", ", duplicates));
+            }
+            else
+            {
+                Console.WriteLine("Não há valores duplicados na lista.");
+            }
+        }
         public void MinMaxSum()
         {
             List<int> list = new List<int> { 396285104, 573261094, 759641832, 819230764, 364801279 };
