@@ -57,7 +57,32 @@ namespace ConsoleApp2
             Console.WriteLine($"{novaLista[0]} {novaLista[1]} {novaLista[2]} {novaLista[3]} {novaLista[4]}");
         }
 
+        public void Handshake()
+        {
+            int numeroDeEntradas = int.Parse(Console.ReadLine());
+            List<int> pessoas = new List<int>();
 
+            for (int i = 0; i < numeroDeEntradas; i++)
+            {
+                int pessoa = int.Parse(Console.ReadLine());
+
+                pessoas.Add(pessoa);
+            }
+
+            for (int i = 0; i < pessoas.Count; i++)
+            {
+                int handshake = pessoas[i];
+                int totalHandshake = 0;
+
+                for (int j = 0; j < pessoas[i] - 1; j++)
+                {
+                    totalHandshake += handshake - 1;
+                    handshake--;
+                }
+
+                Console.WriteLine(totalHandshake);
+            }
+        }
         public void DadosCloudDay()
         {
             long[] p = { 10, 100 };
