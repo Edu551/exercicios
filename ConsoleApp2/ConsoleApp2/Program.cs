@@ -18,8 +18,16 @@ namespace ConsoleApp2
     {
         static void Main(string[] args)
         {
-            
-            
+            string[] firstMultipleInput = Console.ReadLine().TrimEnd().Split(' ');
+
+            int trianglebase = Convert.ToInt32(firstMultipleInput[0]);
+            int area = Convert.ToInt32(firstMultipleInput[1]);
+
+            Console.WriteLine(LowestTriangle(trianglebase, area));
+
+
+
+
             Console.ReadLine();
         }
 
@@ -57,6 +65,20 @@ namespace ConsoleApp2
             Console.WriteLine($"{novaLista[0]} {novaLista[1]} {novaLista[2]} {novaLista[3]} {novaLista[4]}");
         }
 
+
+
+
+        public static int LowestTriangle(int triangleBase, int area)
+        {
+            int height = 2 * area / triangleBase;
+
+            if (area % triangleBase > 0)
+            {
+                height = height + 1;
+            }
+
+            return height;
+        }
         public void Handshake()
         {
             int numeroDeEntradas = int.Parse(Console.ReadLine());
@@ -82,6 +104,15 @@ namespace ConsoleApp2
 
                 Console.WriteLine(totalHandshake);
             }
+
+            // ------------- Solução simplificada -------------
+
+            //for (int i = 0; i < pessoas.Count; i++)
+            //{
+            //    int handshake = pessoas[i] * (pessoas[i] - 1) / 2;
+
+            //    Console.WriteLine(handshake);
+            //}
         }
         public void DadosCloudDay()
         {
